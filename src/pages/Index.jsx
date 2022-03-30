@@ -1,13 +1,38 @@
 import React from "react";
+import styled from "styled-components";
+
+import { NavLink } from "react-router-dom";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
+
+const Title = styled.h2`
+  margin: 15px 0;
+  color: ${props => props.theme.colors.main};
+  font-size: 1.563rem;
+`;
+
+const Text = styled.p`
+  color: ${props => props.theme.colors.main};
+  font-size: 1rem;
+`;
+
+const Info = styled(NavLink)`
+  color: ${props => props.theme.colors.auxiliary};
+  transition: color 0.2s;
+
+  &:hover {
+    color: #9966CC;
+  }
+`;
 
 const Index = () => {
   return (
     <>
       <Container>
-        <h2>Для продолжения необходимо пройти авторизацию.</h2>
+        <Title>Контакты новая и интересная модель списка.</Title>
+        <Text>Мы предлагаем вам заводить контакты пользователей, редактировать и удалять их.</Text>
+        <Info to="auth">Для начала работы пройдите регистрацию.</Info>
       </Container>
     </>
   );

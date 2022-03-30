@@ -7,12 +7,36 @@ import { Burger } from "@cmp/Burger";
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
 
+const FlexContainer = styled(Container)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Navigation = styled.nav`
+  flex: 1 1 auto;
+  padding: 0 10px;
+`;
+
+const Items = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const Item = styled.li`
+  margin: 0 1.563em 0 0;
+`;
+
 const Link = styled(NavLink)`
-  display: inline-block;
-  text-decoration: none;
+  font-size: 1.563rem;
+  color: ${props => props.theme.colors.main};
+  transition: color 0.2s;
 
   &.active {
-    color: ${props => props.theme.colors.auxiliary};
+    color: ${props => props.theme.colors.secondary};
   }
 `;
 
@@ -20,18 +44,29 @@ const Header = ({ ...props }) => {
   return (
     <>
       <header>
-        <Container>
-          <Link {...props} to="/">
-            Главная
-          </Link>
-          <Link {...props} to="/404">
-            Контакты
-          </Link>
-          <Link {...props} to="auth">
-            Авторизация
-          </Link>
+        <FlexContainer>
+          <Navigation>
+            <Items>
+              <Item>
+                <Link {...props} to="/">
+                  Главная
+                </Link>
+              </Item>
+              <Item>
+                <Link {...props} to="/404">
+                  Контакты
+                </Link>
+              </Item>
+              <Item>
+                <Link {...props} to="auth">
+                  Авторизация
+                </Link>
+              </Item>
+            </Items>
+          </Navigation>
+
           <Burger />
-        </Container>
+        </FlexContainer>
       </header>
     </>
   );

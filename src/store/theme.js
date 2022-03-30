@@ -2,7 +2,7 @@ export const theme = {
   container: {
     margin: "0 auto",
     padding: "10px 15px",
-    maxWidth: "1920.92px",
+    maxWidth: "1199.92px",
   },
 
   colors: {
