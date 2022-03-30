@@ -1,4 +1,5 @@
 import React from "react";
+import { Login } from "@cmp/forms/Login";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
@@ -6,9 +7,7 @@ import { Container } from "@src/store/styleComponents";
 const Authorization = () => {
   return (
     <>
-      <Container>
-        <h2>Пройдите авторизацию за пару минут</h2>
-      </Container>
+      <Login />
     </>
   );
 };

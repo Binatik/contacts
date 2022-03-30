@@ -7,6 +7,10 @@ import { Burger } from "@cmp/Burger";
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
 
+const _Header = styled.header`
+  margin: 0 0 30px 0;
+`
+
 const FlexContainer = styled(Container)`
   display: flex;
   justify-content: center;
@@ -43,7 +47,7 @@ const Link = styled(NavLink)`
 const Header = ({ ...props }) => {
   return (
     <>
-      <header>
+      <_Header>
         <FlexContainer>
           <Navigation>
             <Items>
@@ -67,7 +71,7 @@ const Header = ({ ...props }) => {
 
           <Burger />
         </FlexContainer>
-      </header>
+      </_Header>
     </>
   );
 };
