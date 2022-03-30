@@ -30,6 +30,7 @@ const Input = styled.input`
   }
   &::placeholder {
     color: transparent;
+    opacity: 0;
   }
   &:focus {
     border-bottom: 1px solid ${props => props.theme.colors.auxiliary};

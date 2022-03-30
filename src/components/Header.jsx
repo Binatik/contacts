@@ -57,7 +57,7 @@ const Header = ({ ...props }) => {
                 </Link>
               </Item>
               <Item>
-                <Link {...props} to="/404">
+                <Link {...props} to="contacts">
                   Контакты
                 </Link>
               </Item>

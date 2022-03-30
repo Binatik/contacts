@@ -22,7 +22,7 @@ const Info = styled(NavLink)`
   transition: color 0.2s;
 
   &:hover {
-    color: #9966CC;
+    color: #9966cc;
   }
 `;
 
