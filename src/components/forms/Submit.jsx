@@ -11,10 +11,10 @@ const Button = styled.input`
   }
 `;
 
-const Submit = ({ text }) => {
+const Submit = ({ handlerSubmit, text }) => {
   return (
     <>
-      <Button onClick={(event) => event.preventDefault()} type="submit" value={text}></Button>
+      <Button onClick={event => handlerSubmit(event)} type="submit" value={text}></Button>
     </>
   );
 };

@@ -1,18 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "Glenna Reichert",
-  username: "Delphine",
-  email: "Chaim_McDermott@dana.io",
-  isAuth: true
+  value: {
+    name: null, 
+    email: null,
+  },
+  isAuth: false
 };
 
 const user = createSlice({
   name: "slice",
   initialState,
   reducers: {
+    getAccess(state) {
+      state.isAuth = true;
+    }
   },
 });
 
-// export const { toggle } = burger.actions;
+export const { getAccess } = user.actions;
 export default user.reducer;

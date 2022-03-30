@@ -1,12 +1,12 @@
 ## SPA
 
-### Installation
+### Установка
 
 ```sh
 npm install
 ```
 
-### Scripts
+### Скрипты
 
 ```sh
 npm run dev
