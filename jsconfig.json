@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "commonjs",
+    "paths": {
+      "@cmp/*": ["./src/components/*"], 
+      "@pages/*": ["./src/pages/*"], 
+      "@src/*": ["./src/*"],
+    }
+  }
+}
