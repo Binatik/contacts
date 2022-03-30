@@ -1,0 +1,20 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  font-size: inherit;
+  text-decoration: none;
+  font-weight: 300;
+  font-family: "Open Sans", sans-serif;
+}
+
+html,
+#root,
+body {
+  height: 100%;
+}
