@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { InputText } from "./InputText";
 import { Submit } from "./Submit";
-import { getAccess } from "@src/toolkit/slice/user";
+import { getAccess, fetchUser } from "@src/toolkit/slice/user";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
@@ -16,9 +16,13 @@ const Form = styled.form`
 const Login = () => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]);
+
   function getAccessAuth(event) {
     event.preventDefault();
-    alert('Вы успешно авторизовались и теперь вам доступны контакты.');
+    alert("Вы успешно авторизовались и теперь вам доступны контакты.");
     return dispatch(getAccess());
   }
   return (

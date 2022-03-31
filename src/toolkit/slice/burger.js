@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const burger = createSlice({
-  name: "slice",
+  name: "burger",
   initialState,
   reducers: {
     toggle(state) {
