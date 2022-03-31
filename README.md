@@ -1,5 +1,11 @@
 ## SPA
 
+### Пользователи:
+
+https://jsonplaceholder.typicode.com/users
+"name":
+"email":
+
 ### Установка
 
 ```sh
