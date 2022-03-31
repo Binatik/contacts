@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { InputText } from "./InputText";
 import { Submit } from "./Submit";
-import { getAccess, fetchUser } from "@src/toolkit/slice/user";
+import { getAccess, fetchUser } from "@src/toolkit/slice/authorization";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";

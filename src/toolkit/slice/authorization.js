@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchUser = createAsyncThunk("users/fetchUser", async (_, { rejectWithValue }) => {
+export const fetchUser = createAsyncThunk("authorization/fetchUser", async (_, { rejectWithValue }) => {
   try {
     const usersPath = "https://jsonplaceholder.typicode.com/users";
     const response = await fetch(usersPath);
@@ -15,16 +15,16 @@ export const fetchUser = createAsyncThunk("users/fetchUser", async (_, { rejectW
 });
 
 const initialState = {
-  value: {
-    name: null,
+  form: {
+    userName: null,
     email: null,
   },
   isAuth: false,
-  data: [],
+  users: [],
 };
 
-const user = createSlice({
-  name: "user",
+const authorization = createSlice({
+  name: "authorization",
   initialState,
   reducers: {
     getAccess(state) {
@@ -37,8 +37,8 @@ const user = createSlice({
       //Когда идет загрузка данных.
     },
     [fetchUser.fulfilled]: (state, action) => {
-      state.data = action.payload;
-      console.log(state.data);
+      state.users = action.payload;
+      console.log(state.users);
     },
     [fetchUser.rejected]: (state, action) => {
       //Обработка ошибок
@@ -46,5 +46,5 @@ const user = createSlice({
   },
 });
 
-export const { getAccess } = user.actions;
-export default user.reducer;
+export const { getAccess } = authorization.actions;
+export default authorization.reducer;

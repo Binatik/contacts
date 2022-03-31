@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import burger from "./slice/burger";
-import user from "./slice/user";
+import authorization from "./slice/authorization";
 
 export const getBurgerState = state => state.burger;
-export const getUserState = state => state.user;
+export const getAuthorizationState = state => state.authorization;
 
 export const store = configureStore({
   reducer: {
     burger,
-    user,
+    authorization,
   },
 });
