@@ -27,8 +27,18 @@ const authorization = createSlice({
   name: "authorization",
   initialState,
   reducers: {
-    getAccess(state) {
-      state.isAuth = true;
+    setValueName(state, action) {
+      state.form.userName = action.payload;
+    },
+    setValueEmail(state, action) {
+      state.form.email = action.payload;
+    },
+    getAccess(state, action) {
+      const { userName, email } = state.form;
+      const users = action.payload;
+      const isAuth = users.some(user => user.name === userName && user.email === email);
+      state.isAuth = isAuth;
+      state.isAuth ? alert("Вы успешно авторизовались и теперь вам доступны контакты.") : alert("Не верные данные");
     },
   },
 
@@ -38,7 +48,6 @@ const authorization = createSlice({
     },
     [fetchUser.fulfilled]: (state, action) => {
       state.users = action.payload;
-      console.log(state.users);
     },
     [fetchUser.rejected]: (state, action) => {
       //Обработка ошибок
@@ -46,5 +55,5 @@ const authorization = createSlice({
   },
 });
 
-export const { getAccess } = authorization.actions;
+export const { getAccess, setValueName, setValueEmail } = authorization.actions;
 export default authorization.reducer;

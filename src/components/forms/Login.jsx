@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { InputText } from "./InputText";
 import { Submit } from "./Submit";
-import { getAccess, fetchUser } from "@src/toolkit/slice/authorization";
+import { getAccess, setValueName, setValueEmail } from "@src/toolkit/slice/authorization";
+import { getAuthorizationState } from "@src/toolkit/index";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
@@ -14,23 +16,27 @@ const Form = styled.form`
 `;
 
 const Login = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
+  const { users } = useSelector(getAuthorizationState);
+  
+  function getName(event) {
+    dispatch(setValueName(event));
+  }
 
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, [dispatch]);
+  function getEmail(event) {
+    dispatch(setValueEmail(event));
+  }
 
   function getAccessAuth(event) {
     event.preventDefault();
-    alert("Вы успешно авторизовались и теперь вам доступны контакты.");
-    return dispatch(getAccess());
+    dispatch(getAccess(users));
   }
   return (
     <>
       <Container>
         <Form action="post">
-          <InputText labelId={"name"} text="Имя" />
-          <InputText labelId={"email"} text="Email" />
+          <InputText labelId={"name"} text="Имя" handleChange={getName}/>
+          <InputText labelId={"email"} text="Email" handleChange={getEmail} />
           <Submit handlerSubmit={getAccessAuth} text="Войти" />
         </Form>
       </Container>
