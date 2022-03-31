@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
 export const fetchUser = createAsyncThunk("authorization/fetchUser", async (_, { rejectWithValue }) => {
   try {
@@ -15,10 +15,7 @@ export const fetchUser = createAsyncThunk("authorization/fetchUser", async (_, {
 });
 
 const initialState = {
-  form: {
-    userName: null,
-    email: null,
-  },
+  form: {},
   isAuth: false,
   users: [],
 };
@@ -27,18 +24,20 @@ const authorization = createSlice({
   name: "authorization",
   initialState,
   reducers: {
-    setValueName(state, action) {
-      state.form.userName = action.payload;
+    setValueForm(state, action) {
+      const { value, key } = action.payload;
+      state.form = {
+        ...state.form,
+        [key]: value,
+      };
     },
-    setValueEmail(state, action) {
-      state.form.email = action.payload;
-    },
+
     getAccess(state, action) {
-      const { userName, email } = state.form;
-      const users = action.payload;
-      const isAuth = users.some(user => user.name === userName && user.email === email);
+      const { name, email } = state.form;
+      const [connect, error] = ["Вы успешно авторизовались и теперь вам доступны контакты.", "Не верные данные"];
+      const isAuth = state.users.some(user => user.name === name && user.email === email);
       state.isAuth = isAuth;
-      state.isAuth ? alert("Вы успешно авторизовались и теперь вам доступны контакты.") : alert("Не верные данные");
+      state.isAuth ? alert(connect) : alert(error);
     },
   },
 
@@ -55,5 +54,5 @@ const authorization = createSlice({
   },
 });
 
-export const { getAccess, setValueName, setValueEmail } = authorization.actions;
+export const { getAccess, setValueForm } = authorization.actions;
 export default authorization.reducer;

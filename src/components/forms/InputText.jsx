@@ -49,7 +49,7 @@ const InputText = React.memo(({ labelId, text, handleChange }) => {
   return (
     <>
       <InputGroup>
-        <Input onChange={(event) => handleChange(event.target.value)} autoComplete="off" type="text" placeholder={text} id={labelId}/>
+        <Input onChange={(event) => handleChange(event.target.value, labelId)} autoComplete="off" type="text" placeholder={text} id={labelId}/>
         <Label htmlFor={labelId}>{text}</Label>
       </InputGroup>
     </>
