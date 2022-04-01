@@ -1,19 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { InputText } from "./InputText";
+import { InputText } from "../ui/InputText";
 import { Submit } from "./Submit";
 import { getAccess, setValueForm } from "@src/toolkit/slice/authorization";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
 
-const Form = styled.form`
+const MainForm = styled.form`
   padding: 10px;
+  max-width: 450px;
   background-color: transparent;
 `;
 
-const Login = () => {
+const Authorization = () => {
   const dispatch = useDispatch(); 
 
   function getValue(value, key) {
@@ -27,14 +28,14 @@ const Login = () => {
   return (
     <>
       <Container>
-        <Form action="post">
+        <MainForm action="post">
           <InputText labelId={"name"} text="Имя" handleChange={getValue}/>
           <InputText labelId={"email"} text="Email" handleChange={getValue} />
           <Submit handlerSubmit={getAccessAuth} text="Войти" />
-        </Form>
+        </MainForm>
       </Container>
     </>
   );
 };
 
-export { Login };
+export { Authorization };

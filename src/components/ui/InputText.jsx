@@ -8,7 +8,7 @@ const Label = styled.label`
   top: 50%;
   height: auto;
   transform: translate(1px, -50px) scale(0.7); //Трансформация если текст уже написан.
-  font-size: 1rem;
+  font-size: ${props => props.theme.fontSize.label};
   color: ${props => props.theme.colors.iconic};
   transition: transform 0.2s;
 `;
@@ -21,7 +21,7 @@ const Input = styled.input`
   border-bottom: 1px solid ${props => props.theme.colors.main};
   outline: none;
   padding: 11px;
-  font-size: 1rem;
+  font-size: ${props => props.theme.fontSize.label};
   color: ${props => props.theme.colors.main};
   background: transparent;
   transition: border 0.2s;

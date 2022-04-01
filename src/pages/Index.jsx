@@ -9,12 +9,12 @@ import { Container } from "@src/store/styleComponents";
 const Title = styled.h2`
   margin: 15px 0;
   color: ${props => props.theme.colors.main};
-  font-size: 1.563rem;
+  font-size: ${props => props.theme.fontSize.title};
 `;
 
 const Text = styled.p`
   color: ${props => props.theme.colors.main};
-  font-size: 1rem;
+  font-size: ${props => props.theme.fontSize.text};
 `;
 
 const Info = styled(NavLink)`

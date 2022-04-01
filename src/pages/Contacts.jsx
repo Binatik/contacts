@@ -1,14 +1,13 @@
 import React from "react";
-
-//StyledComponents
-import { Container } from "@src/store/styleComponents";
+import { Section } from "@cmp/ui/Section";
+import { Table } from "@cmp/table/Table";
 
 const Contacts = () => {
   return (
     <>
-      <Container>
-        <h2>Этот раздел в разработке.</h2>
-      </Container>
+      <Section title="Контакты">
+        <Table titleText="Контакты" titleButton="Удалить" text="Номер" description="Описание" />
+      </Section>
     </>
   );
 };

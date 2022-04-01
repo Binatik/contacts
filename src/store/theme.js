@@ -5,10 +5,16 @@ export const theme = {
     maxWidth: "1199.92px",
   },
 
+  fontSize: {
+    title: '1.563rem',
+    text: '1rem',
+    label: '1rem',
+  },
+
   colors: {
     main: "#333", //Черный
     secondary: "#06F", //Голубой
-    auxiliary: '#C03' //Красный
+    auxiliary: '#f36' //Красный
   },
 
   breakpoints: {
@@ -18,7 +24,7 @@ export const theme = {
 
   grid: {
     col3: "1 1 33.333%",
-    col2: "0 1 50%",
+    col2: "1 1 50%",
     col1: "1 1 100%",
   },
 };

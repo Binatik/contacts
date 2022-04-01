@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { NavLink } from "react-router-dom";
-import { Burger } from "@cmp/Burger";
+import { Burger } from "@cmp/ui/Burger";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";

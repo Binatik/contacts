@@ -16,7 +16,7 @@ export const fetchUser = createAsyncThunk("authorization/fetchUser", async (_, {
 
 const initialState = {
   form: {},
-  isAuth: false,
+  isAuth: true,
   users: [],
 };
 
