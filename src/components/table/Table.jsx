@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "../ui/Button";
+import { useDispatch } from "react-redux";
 import { User } from "./User";
+import { removeContact } from "@src/toolkit/slice/contact";
 
 import styled from "styled-components";
 
@@ -13,12 +15,17 @@ const Flex = styled.div`
   border: 1px solid #c4c4c4;
 `;
 
-const Table = ({ titleText, titleButton, text, description }) => {
+const Table = ({ titleButton, ...props }) => {
+  const dispatch = useDispatch();
+
+  function remove(id) {
+    dispatch(removeContact(id));
+  }
   return (
     <>
       <Flex>
-        <User titleText={titleText} text={text} description={description} />
-        <Button size={"10px 50px"} title={titleButton} />
+        <User {...props} />
+        <Button handleClick={remove} size={"10px 50px"} title={titleButton} {...props} />
       </Flex>
     </>
   );

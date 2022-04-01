@@ -10,7 +10,7 @@ const Contacts = () => {
     <>
       <Section title="Контакты">
         {data.map(({id, titleText, titleButton, text, description }) => (
-          <Table key={id} titleText={titleText} titleButton={titleButton} text={text} description={description} />
+          <Table key={id} id={id} titleText={titleText} titleButton={titleButton} text={text} description={description} />
         ))}
       </Section>
     </>

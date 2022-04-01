@@ -1,6 +1,6 @@
 ## SPA
 
-### Пользователи:
+### Данные для входа:
 
 https://jsonplaceholder.typicode.com/users
 "name":

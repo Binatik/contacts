@@ -16,11 +16,11 @@ const contact = createSlice({
   name: "contact",
   initialState,
   reducers: {
-   test() {
-     return null;
+   removeContact(state, action) {
+     state.data = state.data.filter((element) => element.id !== action.payload);
    }
   },
 });
 
-export const { test } = contact.actions;
+export const { removeContact } = contact.actions;
 export default contact.reducer;
