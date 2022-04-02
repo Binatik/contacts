@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   contacts: [],
+  error: null,
 };
 
 export const fetchContacts = createAsyncThunk("contacts/fetchContacts", async (_, { rejectWithValue }) => {
@@ -15,7 +16,7 @@ export const fetchContacts = createAsyncThunk("contacts/fetchContacts", async (_
     }
     return response.json();
   } catch (error) {
-    return rejectWithValue(error);
+    return rejectWithValue(error.message);
   }
 });
 
@@ -48,13 +49,13 @@ const contacts = createSlice({
 
   extraReducers: {
     [fetchContacts.pending]: (state, action) => {
-      //Когда идет загрузка данных.
+      state.error = null;
     },
     [fetchContacts.fulfilled]: (state, action) => {
       state.contacts = action.payload;
     },
     [fetchContacts.rejected]: (state, action) => {
-      //Обработка ошибок
+      state.error = action.payload;
     },
   },
 });
