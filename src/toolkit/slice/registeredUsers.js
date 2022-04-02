@@ -1,5 +1,13 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
+const initialState = {
+  users: [],
+  form: {},
+  isAuth: true,
+  activeUser: null,
+  error: null,
+};
+
 export const fetchUsers = createAsyncThunk("registeredUsers/fetchUsers", async (_, { rejectWithValue }) => {
   try {
     const usersPath = "https://jsonplaceholder.typicode.com/users";
@@ -10,16 +18,9 @@ export const fetchUsers = createAsyncThunk("registeredUsers/fetchUsers", async (
     }
     return response.json();
   } catch (error) {
-    return rejectWithValue(error);
+    return rejectWithValue(error.message);
   }
 });
-
-const initialState = {
-  form: {},
-  isAuth: true,
-  activeUser: null,
-  users: [],
-};
 
 const registeredUsers = createSlice({
   name: "registeredUsers",
@@ -45,12 +46,14 @@ const registeredUsers = createSlice({
 
   extraReducers: {
     [fetchUsers.pending]: (state, action) => {
+      state.error = null;
       //Когда идет загрузка данных.
     },
     [fetchUsers.fulfilled]: (state, action) => {
       state.users = action.payload;
     },
     [fetchUsers.rejected]: (state, action) => {
+      state.error = action.payload;
       //Обработка ошибок
     },
   },

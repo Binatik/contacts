@@ -7,6 +7,7 @@ import { Index } from "@pages/Index";
 import { Contacts } from "@pages/Contacts";
 import { Authentication } from "@pages/Authentication";
 import { fetchUsers } from "@src/toolkit/slice/registeredUsers";
+import { fetchContacts } from "@src/toolkit/slice/contacts";
 import { Error404 } from "@pages/Error404";
 import "./style.css";
 
@@ -15,6 +16,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchUsers());
+    dispatch(fetchContacts());
     //Зависим от dispatch
   }, [dispatch]);
 

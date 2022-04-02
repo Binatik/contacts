@@ -36,6 +36,7 @@ const Input = styled.input`
     border-bottom: 1px solid ${props => props.theme.colors.auxiliary};
   }
   &:focus + ${Label} {
+    color: ${props => props.theme.colors.auxiliary};
     transform: translate(11px, -50px) scale(0.7); //Трансформация если текста еще нет, но есть  focus.
   }
 `;
@@ -49,7 +50,7 @@ const InputText = React.memo(({ labelId, text, handleChange }) => {
   return (
     <>
       <InputGroup>
-        <Input onChange={(event) => handleChange(event.target.value, labelId)} autoComplete="off" type="text" placeholder={text} id={labelId}/>
+        <Input onChange={event => handleChange(event.target.value, labelId)} autoComplete="off" type="text" placeholder={text} id={labelId} />
         <Label htmlFor={labelId}>{text}</Label>
       </InputGroup>
     </>

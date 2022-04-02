@@ -18,6 +18,7 @@ const Text = styled.p`
 `;
 
 const Info = styled(NavLink)`
+  font-size: 0.8rem;
   color: ${props => props.theme.colors.auxiliary};
   transition: color 0.2s;
 
