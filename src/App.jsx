@@ -6,7 +6,7 @@ import { Auth } from "@cmp/ui/Auth";
 import { Index } from "@pages/Index";
 import { Contacts } from "@pages/Contacts";
 import { Authentication } from "@pages/Authentication";
-import { fetchUser } from "@src/toolkit/slice/authorization";
+import { fetchUsers } from "@src/toolkit/slice/registeredUsers";
 import { Error404 } from "@pages/Error404";
 import "./style.css";
 
@@ -14,7 +14,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUser());
+    dispatch(fetchUsers());
     //Зависим от dispatch
   }, [dispatch]);
 

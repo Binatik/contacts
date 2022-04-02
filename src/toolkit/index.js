@@ -1,16 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import burger from "./slice/burger";
-import authorization from "./slice/authorization";
-import contact from "./slice/contact";
+import registeredUsers from "./slice/registeredUsers";
+import contacts from "./slice/contacts";
 
 export const getBurgerState = state => state.burger;
-export const getAuthorizationState = state => state.authorization;
-export const getContactState = state => state.contact;
+export const getRegisteredUsersState = state => state.registeredUsers;
+export const getContactsState = state => state.contacts;
 
 export const store = configureStore({
   reducer: {
     burger,
-    authorization, 
-    contact,
+    registeredUsers, 
+    contacts
   },
 });

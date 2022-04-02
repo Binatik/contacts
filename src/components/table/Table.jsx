@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../ui/Button";
 import { useDispatch } from "react-redux";
 import { User } from "./User";
-import { removeContact } from "@src/toolkit/slice/contact";
+import { removeContact } from "@src/toolkit/slice/contacts";
 
 import styled from "styled-components";
 

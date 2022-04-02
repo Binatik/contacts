@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
-export const fetchUser = createAsyncThunk("authorization/fetchUser", async (_, { rejectWithValue }) => {
+export const fetchUsers = createAsyncThunk("registeredUsers/fetchUsers", async (_, { rejectWithValue }) => {
   try {
     const usersPath = "https://jsonplaceholder.typicode.com/users";
     const response = await fetch(usersPath);
@@ -17,11 +17,12 @@ export const fetchUser = createAsyncThunk("authorization/fetchUser", async (_, {
 const initialState = {
   form: {},
   isAuth: true,
+  activeUser: null,
   users: [],
 };
 
-const authorization = createSlice({
-  name: "authorization",
+const registeredUsers = createSlice({
+  name: "registeredUsers",
   initialState,
   reducers: {
     setValueForm(state, action) {
@@ -35,24 +36,25 @@ const authorization = createSlice({
     getAccess(state, action) {
       const { name, email } = state.form;
       const [connect, error] = ["Вы успешно авторизовались и теперь вам доступны контакты.", "Не верные данные"];
-      const isAuth = state.users.some(user => user.name === name && user.email === email);
-      state.isAuth = isAuth;
+      const activeUser = state.users.find(user => user.name === name && user.email === email);
+      state.isAuth = !!activeUser;
       state.isAuth ? alert(connect) : alert(error);
+      state.activeUser = activeUser;
     },
   },
 
   extraReducers: {
-    [fetchUser.pending]: (state, action) => {
+    [fetchUsers.pending]: (state, action) => {
       //Когда идет загрузка данных.
     },
-    [fetchUser.fulfilled]: (state, action) => {
+    [fetchUsers.fulfilled]: (state, action) => {
       state.users = action.payload;
     },
-    [fetchUser.rejected]: (state, action) => {
+    [fetchUsers.rejected]: (state, action) => {
       //Обработка ошибок
     },
   },
 });
 
-export const { getAccess, setValueForm } = authorization.actions;
-export default authorization.reducer;
+export const { getAccess, setValueForm } = registeredUsers.actions;
+export default registeredUsers.reducer;

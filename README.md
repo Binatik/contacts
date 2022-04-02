@@ -17,4 +17,5 @@ npm install
 ```sh
 npm run dev
 npm run build
+json-server --watch db.json --port 5000
 ```

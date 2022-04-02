@@ -1,0 +1,12 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "titleText": "Сергей А.С",
+      "titleButton": "Удалить",
+      "text": "Удалить",
+      "description": "Эти данные формируются сейчас из redux из db.json."
+    }
+  ]
+} 
+

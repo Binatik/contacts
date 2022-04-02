@@ -7,6 +7,8 @@ import { store } from "./toolkit/index.js";
 import { theme } from "@src/store/theme";
 import { HashRouter } from "react-router-dom";
 
+//json-server --watch db.json --port 5000
+
 ReactDOM.render(
   <HashRouter>
     <ThemeProvider theme={theme}>
