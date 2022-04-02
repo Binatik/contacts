@@ -12,5 +12,6 @@ export const store = configureStore({
     burger,
     registeredUsers, 
     contacts
-  },
+  }, 
+  devTools: process.env.NODE_ENV !== 'production',
 });
