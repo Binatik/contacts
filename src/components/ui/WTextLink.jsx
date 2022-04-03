@@ -13,7 +13,7 @@ const Warning = styled(NavLink)`
   }
 `;
 
-const WarningTextLink = ({path, warningText}) => {
+const WTextLink = ({path, warningText}) => {
   return (
     <>
       <Warning to={path}>{warningText}</Warning>
@@ -21,4 +21,4 @@ const WarningTextLink = ({path, warningText}) => {
   );
 };
 
-export { WarningTextLink };
+export { WTextLink };

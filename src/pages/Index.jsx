@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { WarningTextLink } from "@cmp/ui/warningTextLink";
+import { WarningTextLink } from "@cmp/ui/WTextLink";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
@@ -23,7 +23,7 @@ const Index = () => {
       <Container>
         <Title>Контакты новая и интересная модель списка.</Title>
         <Text>Мы предлагаем вам заводить контакты пользователей, редактировать и удалять их.</Text>
-        <WarningTextLink path="auth" warningText="Для начала работы пройдите регистрацию." />
+        <WTextLink path="auth" warningText="Для начала работы пройдите регистрацию." />
       </Container>
     </>
   );
