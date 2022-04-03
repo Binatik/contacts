@@ -6,6 +6,7 @@ const MainButton = styled.button`
   padding: ${props => props.size};
   background-color: ${props => props.theme.colors.auxiliary};
   color: #fff;
+  width: 100%;
   transition: 0.1s;
 
   &:hover {
@@ -13,8 +14,7 @@ const MainButton = styled.button`
   }
 `;
 
-const Button = ({handleClick, id, title, ...props }) => {
- 
+const Button = ({ handleClick, id, title, ...props }) => {
   return (
     <>
       <MainButton onClick={() => handleClick(id)} {...props} type="button">
@@ -24,4 +24,4 @@ const Button = ({handleClick, id, title, ...props }) => {
   );
 };
 
-export default Button;
+export { Button };

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { InputText } from "../ui/InputText";
+import { InputText } from "./InputText";
 import { Submit } from "./Submit";
 import { getAccess, setValueForm } from "@src/toolkit/slice/registeredUsers";
 

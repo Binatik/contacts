@@ -7,6 +7,7 @@ import { Container } from "@src/store/styleComponents";
 const FlexContainer = styled(Container)`
   display: flex;
   align-items: center;
+  flex-direction: column;
   flex-wrap: wrap;
 `;
 
@@ -22,8 +23,10 @@ const Section = ({ title, children }) => {
   return (
     <>
       <section>
-        <Title>{title}</Title>
-        <FlexContainer>{children}</FlexContainer>
+        <FlexContainer>
+          <Title>{title}</Title>
+          {children}
+        </FlexContainer>
       </section>
     </>
   );

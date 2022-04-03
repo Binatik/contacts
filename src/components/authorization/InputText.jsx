@@ -33,7 +33,7 @@ const Input = styled.input`
     opacity: 0;
   }
   &:focus {
-    border-bottom: 1px solid ${props => props.theme.colors.auxiliary};
+    border-bottom: 1px solid ${props => props.theme.colors.animated};
   }
   &:focus + ${Label} {
     color: ${props => props.theme.colors.auxiliary};

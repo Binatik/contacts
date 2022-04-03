@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { NavLink } from "react-router-dom";
+import { WarningTextLink } from "@cmp/ui/warningTextLink";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
@@ -17,23 +17,13 @@ const Text = styled.p`
   font-size: ${props => props.theme.fontSize.text};
 `;
 
-const Info = styled(NavLink)`
-  font-size: 0.8rem;
-  color: ${props => props.theme.colors.auxiliary};
-  transition: color 0.2s;
-
-  &:hover {
-    color: #9966cc;
-  }
-`;
-
 const Index = () => {
   return (
     <>
       <Container>
         <Title>Контакты новая и интересная модель списка.</Title>
         <Text>Мы предлагаем вам заводить контакты пользователей, редактировать и удалять их.</Text>
-        <Info to="auth">Для начала работы пройдите регистрацию.</Info>
+        <WarningTextLink path="auth" warningText="Для начала работы пройдите регистрацию." />
       </Container>
     </>
   );

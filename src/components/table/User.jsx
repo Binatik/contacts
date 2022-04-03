@@ -18,7 +18,7 @@ const Description = styled.p`
   color: ${props => props.theme.colors.auxiliary};
 `;
 
-const Item = styled.div`
+const Contact = styled.div`
   background-color: transparent;
   padding: 10px;
   flex: 1 1;
@@ -27,11 +27,11 @@ const Item = styled.div`
 const User = ({ titleText, text, description }) => {
   return (
     <>
-      <Item>
+      <Contact>
         <Title>{titleText}</Title>
         <Text>{text}</Text>
         <Description>{description}</Description>
-      </Item>
+      </Contact>
     </>
   );
 };

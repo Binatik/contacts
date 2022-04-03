@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 const initialState = {
   users: [],
   form: {},
-  isAuth: false,
+  isAuth: true,
   activeUser: null,
   error: null,
 };
