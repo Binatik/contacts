@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { WarningTextLink } from "@cmp/ui/WTextLink";
+import { WTextLink } from "@cmp/ui/WTextLink";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
