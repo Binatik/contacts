@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { getRequest } from "@src/toolkit/fetch";
 
 const initialState = {
   users: [],
@@ -9,17 +10,10 @@ const initialState = {
 };
 
 export const fetchUsers = createAsyncThunk("registeredUsers/fetchUsers", async (_, { rejectWithValue }) => {
-  try {
-    const usersPath = "https://jsonplaceholder.typicode.com/users";
-    const response = await fetch(usersPath);
-
-    if (!response.ok) {
-      throw new Error("Вы не получили запрос в fetchUser");
-    }
-    return response.json();
-  } catch (error) {
-    return rejectWithValue(error.message);
-  }
+  return getRequest({
+    path: `https://jsonplaceholder.typicode.com/users`,
+    reject: rejectWithValue,
+  });
 });
 
 const registeredUsers = createSlice({

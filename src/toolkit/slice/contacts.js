@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { getRequest } from "@src/toolkit/fetch";
 
 const initialState = {
   contacts: [],
@@ -6,36 +7,19 @@ const initialState = {
 };
 
 export const fetchContacts = createAsyncThunk("contacts/fetchContacts", async (_, { rejectWithValue }) => {
-  try {
-    const port = 5000;
-    const contactsPath = `http://localhost:${port}/contacts`;
-    const response = await fetch(contactsPath);
-
-    if (!response.ok) {
-      throw new Error("Вы не получили запрос в fetchContacts");
-    }
-    return response.json();
-  } catch (error) {
-    return rejectWithValue(error.message);
-  }
+  return getRequest({
+    path: `http://localhost:${5000}/contacts`,
+    reject: rejectWithValue,
+  });
 });
 
 export const fetchRemoveContact = createAsyncThunk("contacts/removeContact", async (id, { rejectWithValue, dispatch }) => {
-  try {
-    const port = 5000;
-    const contactsPath = `http://localhost:${port}/contacts/${id}`;
-    const response = await fetch(contactsPath, {
-      method: "DELETE",
-    });
-
-    if (!response.ok) {
-      throw new Error("Вы не получили запрос в fetchContacts");
-    }
-
-    dispatch(removeContact(id));
-  } catch (error) {
-    return rejectWithValue(error.message);
-  }
+  return getRequest({
+    path: `http://localhost:${5000}/contacts/${id}`,
+    reject: rejectWithValue,
+    method: "DELETE",
+    dispatch: dispatch(removeContact(id)),
+  });
 });
 
 const contacts = createSlice({
