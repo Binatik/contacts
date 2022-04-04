@@ -15,20 +15,20 @@ const Item = styled.article`
   flex-wrap: wrap;
 
   @media ${props => props.theme.breakpoints.tablet} {
-  display: block;
- }
+    display: block;
+  }
 `;
 
 const Group = styled.div`
- display: flex;
- flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
- @media ${props => props.theme.breakpoints.tablet} {
-  width: 100%;
- }
-`
+  @media ${props => props.theme.breakpoints.tablet} {
+    width: 100%;
+  }
+`;
 
-const Table = ({ titleButton, ...props }) => {
+const Table = ({ ...props }) => {
   const dispatch = useDispatch();
 
   function removeContact(id) {
@@ -38,7 +38,7 @@ const Table = ({ titleButton, ...props }) => {
     <>
       <Item>
         <User {...props} />
-        <Group >
+        <Group>
           <Button handleClick={removeContact} size={"10px 50px"} title="Удалить" {...props} />
           <Button handleClick={removeContact} size={"10px 50px"} title="редактировать" {...props} />
         </Group>

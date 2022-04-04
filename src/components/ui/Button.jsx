@@ -14,10 +14,10 @@ const MainButton = styled.button`
   }
 `;
 
-const Button = ({ handleClick, id, title, ...props }) => {
+const Button = ({ handleClick, argument, title, ...props }) => {
   return (
     <>
-      <MainButton onClick={() => handleClick(id)} {...props} type="button">
+      <MainButton onClick={() => handleClick(argument)} {...props} type="button">
         {title}
       </MainButton>
     </>

@@ -9,13 +9,9 @@ const Сircle = styled.div`
   width: ${props => props.buttonSize};
   height: ${props => props.buttonSize};
   padding: ${props => props.size};
-  background-color: ${props => props.theme.colors.main};
+  background-color: ${props => (props.modalActive ? props.theme.colors.secondary : props.theme.colors.main)};
   color: #fff;
   transition: transform 0.5s;
-
-  &:hover {
-    background-color: ${props => props.theme.colors.secondary};
-  }
 
   &::before,
   ::after {
@@ -32,22 +28,18 @@ const Сircle = styled.div`
   }
 
   &::before {
-    transform: translate(-50%, 0) rotate(90deg);
+    transform: ${props => (props.modalActive ? "translate(-50%, 0) rotate(360deg)" : "translate(-50%, 0) rotate(90deg)")};
   }
 
   &::after {
-    transform: translate(-50%, 0) rotate(0deg);
-  }
-
-  &:hover::before, :hover::after {
-    transform: translate(-50%, 0) rotate(360deg);
+    transform: ${props => (props.modalActive ? "translate(-50%, 0) rotate(360deg)" : "translate(-50%, 0) rotate(0deg)")};
   }
 `;
 
-const RoundButton = ({ handleClick, ...props }) => {
+const RoundButton = ({ handleClick, argument, ...props }) => {
   return (
     <>
-      <Сircle onClick={handleClick} {...props}></Сircle>
+      <Сircle onClick={() => handleClick(argument)} {...props}></Сircle>
     </>
   );
 };
