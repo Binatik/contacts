@@ -20,7 +20,7 @@ const registeredUsers = createSlice({
   name: "registeredUsers",
   initialState,
   reducers: {
-    setValueForm(state, action) {
+    setValueRegisteredUsers(state, action) {
       const { value, key } = action.payload;
       state.form = {
         ...state.form,
@@ -53,5 +53,5 @@ const registeredUsers = createSlice({
   },
 });
 
-export const { getAccess, setValueForm } = registeredUsers.actions;
+export const { getAccess, setValueRegisteredUsers } = registeredUsers.actions;
 export default registeredUsers.reducer;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { InputText } from "./InputText";
 import { Submit } from "./Submit";
-import { getAccess, setValueForm } from "@src/toolkit/slice/registeredUsers";
+import { getAccess, setValueRegisteredUsers } from "@src/toolkit/slice/registeredUsers";
 
 //StyledComponents
 import { Container } from "@src/store/styleComponents";
@@ -18,7 +18,7 @@ const Authorization = () => {
   const dispatch = useDispatch(); 
 
   function getValue(value, key) {
-    dispatch(setValueForm({value, key}));
+    dispatch(setValueRegisteredUsers({value, key}));
   }
 
   function getAccessAuth(event) {

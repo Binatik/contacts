@@ -3,6 +3,7 @@ import { getRequest } from "@src/toolkit/fetch";
 
 const initialState = {
   contacts: [],
+  form: {},
   error: null,
 };
 
@@ -29,6 +30,16 @@ const contacts = createSlice({
     removeContact(state, action) {
       state.contacts = state.contacts.filter(element => element.id !== action.payload);
     },
+
+    setValueContacts(state, action) {
+      const { value, key } = action.payload;
+      state.form = {
+        ...state.form,
+        [key]: value,
+      };
+
+      console.log(state.form);
+    },
   },
 
   extraReducers: {
@@ -44,5 +55,5 @@ const contacts = createSlice({
   },
 });
 
-export const { removeContact } = contacts.actions;
+export const { removeContact, setValueContacts } = contacts.actions;
 export default contacts.reducer;
