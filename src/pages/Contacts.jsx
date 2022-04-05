@@ -10,7 +10,7 @@ import { Form } from "@cmp/form/Form";
 import { InputTextForm } from "@cmp/form/InputTextForm";
 import { Button } from "@cmp/ui/Button";
 import { useDispatch } from "react-redux";
-import { setValueContacts } from "@src/toolkit/slice/contacts";
+import { setValueContacts, fetchCreateContact } from "@src/toolkit/slice/contacts";
 
 const Items = styled.div`
   display: flex;
@@ -28,8 +28,8 @@ const Contacts = () => {
     dispatch(setValueContacts({ value, key }));
   }
 
-  function testings2(value) {
-    console.log("value");
+  function createContact() {
+    dispatch(fetchCreateContact());
   }
   return (
     <>
@@ -40,7 +40,7 @@ const Contacts = () => {
               <InputTextForm handleChange={getValue} labelId="title" text="Контакт" />
               <InputTextForm handleChange={getValue} labelId="text" text="Описание" />
               <InputTextForm handleChange={getValue} labelId="description" text="Заметка" />
-              <Button title="Cоздать контакт" size="20px 0" handleClick={testings2} />
+              <Button title="Cоздать контакт" size="20px 0" handleClick={createContact} />
             </Form>
           </Section>
         </Modal>

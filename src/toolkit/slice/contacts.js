@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-import { getRequest } from "@src/toolkit/fetch";
+import { getRequest, postRequest } from "@src/toolkit/fetch";
 
 const initialState = {
   contacts: [],
@@ -14,12 +14,21 @@ export const fetchContacts = createAsyncThunk("contacts/fetchContacts", async (_
   });
 });
 
-export const fetchRemoveContact = createAsyncThunk("contacts/removeContact", async (id, { rejectWithValue, dispatch }) => {
+export const fetchRemoveContact = createAsyncThunk("contacts/fetchRemoveContact", async (id, { rejectWithValue, dispatch }) => {
   return getRequest({
     path: `http://localhost:${5000}/contacts/${id}`,
-    reject: rejectWithValue,
     method: "DELETE",
     dispatch: dispatch(removeContact(id)),
+    reject: rejectWithValue,
+  });
+});
+
+export const fetchCreateContact = createAsyncThunk("contacts/createContact", async (_, { rejectWithValue, dispatch, getState }) => {
+  return postRequest({
+    path: `http://localhost:${5000}/contacts`,
+    body: getState().contacts.form,
+    reject: rejectWithValue,
+    // dispatch: dispatch(removeContact(id)),
   });
 });
 
@@ -48,6 +57,9 @@ const contacts = createSlice({
     },
     [fetchContacts.fulfilled]: (state, action) => {
       state.contacts = action.payload;
+    },
+    [ fetchCreateContact.fulfilled]: (state, action) => {
+      console.log(action.payload);
     },
     [fetchContacts.rejected]: (state, action) => {
       state.error = action.payload;
