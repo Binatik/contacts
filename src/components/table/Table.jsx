@@ -28,7 +28,7 @@ const Group = styled.div`
   }
 `;
 
-const Table = ({ ...props }) => {
+const Table = ({id, ...props }) => {
   const dispatch = useDispatch();
 
   function removeContact(id) {
@@ -39,8 +39,8 @@ const Table = ({ ...props }) => {
       <Item>
         <User {...props} />
         <Group>
-          <Button handleClick={removeContact} size={"10px 50px"} title="Удалить" {...props} />
-          <Button handleClick={removeContact} size={"10px 50px"} title="редактировать" {...props} />
+          <Button handleClick={removeContact} size={"10px 50px"} buttonTitle="Удалить" {...props} />
+          <Button handleClick={removeContact} size={"10px 50px"} buttonTitle="редактировать" {...props} />
         </Group>
       </Item>
     </>

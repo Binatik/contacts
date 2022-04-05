@@ -23,12 +23,11 @@ export const fetchRemoveContact = createAsyncThunk("contacts/fetchRemoveContact"
   });
 });
 
-export const fetchCreateContact = createAsyncThunk("contacts/createContact", async (_, { rejectWithValue, dispatch, getState }) => {
+export const fetchCreateContact = createAsyncThunk("contacts/createContact", async (_, { rejectWithValue, getState }) => {
   return postRequest({
     path: `http://localhost:${5000}/contacts`,
     body: getState().contacts.form,
     reject: rejectWithValue,
-    // dispatch: dispatch(removeContact(id)),
   });
 });
 
@@ -40,14 +39,18 @@ const contacts = createSlice({
       state.contacts = state.contacts.filter(element => element.id !== action.payload);
     },
 
+    createContact(state, action) {
+      state.contacts.push(action.payload);
+    },
+
     setValueContacts(state, action) {
-      const { value, key } = action.payload;
+      const key = action.payload["1"];
+      const value = action.payload["0"];
+
       state.form = {
         ...state.form,
         [key]: value,
       };
-
-      console.log(state.form);
     },
   },
 
@@ -58,8 +61,8 @@ const contacts = createSlice({
     [fetchContacts.fulfilled]: (state, action) => {
       state.contacts = action.payload;
     },
-    [ fetchCreateContact.fulfilled]: (state, action) => {
-      console.log(action.payload);
+    [fetchCreateContact.fulfilled]: (state, action) => {
+      state.contacts.push(action.payload);
     },
     [fetchContacts.rejected]: (state, action) => {
       state.error = action.payload;

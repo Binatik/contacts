@@ -24,11 +24,11 @@ const Contact = styled.div`
   flex: 1 1;
 `;
 
-const User = ({ titleText, text, description }) => {
+const User = ({ title, text, description }) => {
   return (
     <>
       <Contact>
-        <Title>{titleText}</Title>
+        <Title>{title}</Title>
         <Text>{text}</Text>
         <Description>{description}</Description>
       </Contact>

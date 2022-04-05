@@ -8,7 +8,6 @@ import { RoundButton } from "@cmp/ui/RoundButton";
 import { Modal } from "@cmp/Modal/Modal";
 import { Form } from "@cmp/form/Form";
 import { InputTextForm } from "@cmp/form/InputTextForm";
-import { Button } from "@cmp/ui/Button";
 import { useDispatch } from "react-redux";
 import { setValueContacts, fetchCreateContact } from "@src/toolkit/slice/contacts";
 
@@ -20,35 +19,47 @@ const Items = styled.div`
 `;
 
 const Contacts = () => {
-  const { contacts } = useSelector(getContactsState);
+  const { contacts, form } = useSelector(getContactsState);
   const [modalActive, setModalActive] = useState(false);
   const dispatch = useDispatch();
 
-  function getValue(value, key) {
-    dispatch(setValueContacts({ value, key }));
+  function isEmptyObject(obj) {
+    for (const i in obj) {
+      if (obj.hasOwnProperty(i)) return false;
+    }
+    return true;
+  }
+
+  function getValue(...argument) {
+    dispatch(setValueContacts({ ...argument }));
   }
 
   function createContact() {
+    if (isEmptyObject(form)) {
+      alert("поле пустое");
+      return;
+    }
     dispatch(fetchCreateContact());
+    alert("Вы создали успешно новый контакт.");
   }
+
   return (
     <>
       <Section title="Контакты">
         <Modal active={modalActive} setActive={setModalActive}>
           <Section title="Создать контакт">
-            <Form>
+            <Form handleClick={createContact}>
               <InputTextForm handleChange={getValue} labelId="title" text="Контакт" />
               <InputTextForm handleChange={getValue} labelId="text" text="Описание" />
               <InputTextForm handleChange={getValue} labelId="description" text="Заметка" />
-              <Button title="Cоздать контакт" size="20px 0" handleClick={createContact} />
             </Form>
           </Section>
         </Modal>
         <RoundButton modalActive={modalActive} buttonSize="50px" handleClick={setModalActive} argument={!modalActive} />
         <Items>
           {contacts.length === 0 && <h2>Нету контактов.</h2>}
-          {contacts.map(({ id, titleText, text, description }) => (
-            <Table key={id} argument={id} titleText={titleText} text={text} description={description} />
+          {contacts.map(({ id, title, text, description }) => (
+            <Table key={id} argument={id} title={title} text={text} description={description} />
           ))}
         </Items>
       </Section>

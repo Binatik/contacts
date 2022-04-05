@@ -21,7 +21,9 @@ const registeredUsers = createSlice({
   initialState,
   reducers: {
     setValueRegisteredUsers(state, action) {
-      const { value, key } = action.payload;
+      const key = action.payload['1'];
+      const value  = action.payload['0'];
+
       state.form = {
         ...state.form,
         [key]: value,

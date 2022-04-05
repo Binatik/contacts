@@ -15,21 +15,21 @@ const MainForm = styled.form`
 `;
 
 const Authorization = () => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
-  function getValue(value, key) {
-    dispatch(setValueRegisteredUsers({value, key}));
+  function getValue(...argument) {
+    dispatch(setValueRegisteredUsers({ ...argument }));
   }
 
-  function getAccessAuth(event) {
-    event.preventDefault();
+  function getAccessAuth(argument) {
+    argument.preventDefault();
     dispatch(getAccess());
   }
   return (
     <>
       <Container>
         <MainForm action="post">
-          <InputText labelId={"name"} text="Имя" handleChange={getValue}/>
+          <InputText labelId={"name"} text="Имя" handleChange={getValue} />
           <InputText labelId={"email"} text="Email" handleChange={getValue} />
           <Submit handlerSubmit={getAccessAuth} text="Войти" />
         </MainForm>

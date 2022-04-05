@@ -1,10 +1,11 @@
 import React from "react";
-import { InputTextForm } from "./InputTextForm";
+import { Button } from "@cmp/ui/Button";
 
-const Form = ({children}) => {
+const Form = ({children, ...props}) => {
   return (
     <>
     {children}
+    <Button buttonTitle="Cоздать контакт" size="20px 0" {...props} />
     </>
   );
 };
