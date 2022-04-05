@@ -1,11 +1,12 @@
 import React, { Children } from "react";
+import ReactDOM from "react-dom";
 import styled from "styled-components";
 
 const ModalContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  min-width: 100vw;
   height: 100vh;
   background-color: #00000061;
   position: fixed;
@@ -17,19 +18,17 @@ const ModalContainer = styled.div`
 `;
 
 const Content = styled.div`
+  min-width: 250px;
   padding: 20px;
   background-color: #fff;
 `;
 
 const Modal = ({ setActive, children, ...props }) => {
-  return (
-    <>
-      <ModalContainer {...props} onClick={() => setActive(false)}>
-        <Content onClick={event => event.stopPropagation()}>
-          {children}
-        </Content>
-      </ModalContainer>
-    </>
+  return ReactDOM.createPortal(
+    <ModalContainer {...props} onClick={() => setActive(false)}>
+      <Content onClick={event => event.stopPropagation()}>{children}</Content>
+    </ModalContainer>,
+    document.getElementById("root")
   );
 };
 
