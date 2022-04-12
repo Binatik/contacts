@@ -25,6 +25,7 @@ const Authorization = () => {
     argument.preventDefault();
     dispatch(getAccess());
   }
+
   return (
     <>
       <Container>

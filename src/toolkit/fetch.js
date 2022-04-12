@@ -1,4 +1,4 @@
-async function getRequest({ path, reject, method = "GET", dispatch = null, state = null }) {
+async function getRequest({ path, reject, method = "GET", payload = null }) {
   try {
     const response = await fetch(path, {
       method,
@@ -8,7 +8,7 @@ async function getRequest({ path, reject, method = "GET", dispatch = null, state
       throw new Error("Запрос не был Request");
     }
 
-    if (dispatch) dispatch;
+    if (payload) return payload;
 
     return response.json();
   } catch (error) {
@@ -16,7 +16,7 @@ async function getRequest({ path, reject, method = "GET", dispatch = null, state
   }
 }
 
-async function postRequest({ path, reject, method = "POST", body = "body", dispatch = null}) {
+async function postRequest({ path, reject, method = "POST", body = "body", payload = null }) {
   try {
     const response = await fetch(path, {
       method,
@@ -30,7 +30,7 @@ async function postRequest({ path, reject, method = "POST", body = "body", dispa
       throw new Error("Запрос не был Request");
     }
 
-    if (dispatch) dispatch;
+    if (payload) return payload;
 
     return response.json();
   } catch (error) {

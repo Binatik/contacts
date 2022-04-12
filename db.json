@@ -1,9 +1,16 @@
 {
   "contacts": [
     {
-      "title": "1",
-      "text": "22",
+      "title": "Петя",
+      "text": "Коля",
+      "description": "Вася",
       "id": 1
+    },
+    {
+      "title": "Петя",
+      "text": "Коля",
+      "description": "Вася",
+      "id": 2
     }
   ]
 }

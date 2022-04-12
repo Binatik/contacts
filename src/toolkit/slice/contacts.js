@@ -18,7 +18,7 @@ export const fetchRemoveContact = createAsyncThunk("contacts/fetchRemoveContact"
   return getRequest({
     path: `http://localhost:${5000}/contacts/${id}`,
     method: "DELETE",
-    dispatch: dispatch(removeContact(id)),
+    payload: id,
     reject: rejectWithValue,
   });
 });
@@ -35,9 +35,6 @@ const contacts = createSlice({
   name: "contacts",
   initialState,
   reducers: {
-    removeContact(state, action) {
-      state.contacts = state.contacts.filter(element => element.id !== action.payload);
-    },
 
     createContact(state, action) {
       state.contacts.push(action.payload);
@@ -64,6 +61,10 @@ const contacts = createSlice({
     [fetchCreateContact.fulfilled]: (state, action) => {
       state.contacts.push(action.payload);
     },
+    [fetchRemoveContact.fulfilled]: (state, action) => {
+      state.contacts = state.contacts.filter(element => element.id !== action.payload);
+    },
+    
     [fetchContacts.rejected]: (state, action) => {
       state.error = action.payload;
     },
